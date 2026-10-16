@@ -5,6 +5,7 @@
   "type": "module",
   "main": "src/todo.js",
   "scripts": {
+    "start": "node scripts/start.js",
     "test": "node --test"
   },
   "engines": {
