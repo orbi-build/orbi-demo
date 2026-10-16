@@ -4,6 +4,15 @@ Run a small todo app, then ask [Orbi](https://orbi.build/?ref=gh-orbi-demo) to a
 
 ![The running demo: three example tasks, All/Active/Done filters, and a suggested Clear completed change.](docs/demo-app.png)
 
+<details>
+<summary>Watch the 44-second beta demo</summary>
+
+Clear completed before and after a real Orbi delivery. The waiting time is cut out. Recorded on beta; follow the steps and current trial terms below.
+
+https://github.com/user-attachments/assets/aecc3297-bcd2-4fbc-85a3-dfed736dacff
+
+</details>
+
 ## 1. Create your copy
 
 Click [Use this template](https://github.com/orbi-build/orbi-demo/generate) and create a repository in your GitHub account. Keep the name `orbi-demo` to use the commands below unchanged except for your username.
