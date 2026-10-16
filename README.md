@@ -1,8 +1,8 @@
 # orbi-demo
 
-Try an example onboarding checklist, then ask [Orbi](https://orbi.build/?ref=gh-orbi-demo) to add a useful feature in your own copy. Start with **Clear completed**: you will be able to see and use the change after Orbi merges it.
+Try an example onboarding checklist, then ask [Orbi](https://orbi.build/?ref=gh-orbi-demo) to add a useful feature in your own copy. Start with **Clear completed**: after Orbi merges it, you open your copy's web page and use the new button.
 
-[Open the live example](https://orbi-build.github.io/orbi-demo/) — no installation or sign-in needed. The checked items are sample progress, not your account status. Your edits on this page reset when you refresh. This public example does not show changes Orbi makes in your own repository.
+[Open the live example](https://orbi-build.github.io/orbi-demo/) — no installation or sign-in needed. The checked items are sample progress, not your account status. Your edits on this page reset when you refresh. Changes Orbi makes in your copy show up on your copy's own page, not on this one.
 
 ![The running demo: five Orbi onboarding steps, two checked examples, All/Active/Done filters, and a suggested Clear completed change.](docs/demo-app.png)
 
@@ -17,11 +17,17 @@ https://github.com/user-attachments/assets/aecc3297-bcd2-4fbc-85a3-dfed736dacff
 
 ## 1. Create your copy
 
-Click [Use this template](https://github.com/orbi-build/orbi-demo/generate) and create a repository in your GitHub account. Keep the name `orbi-demo` to use the commands below unchanged except for your username.
+Click [Use this template](https://github.com/orbi-build/orbi-demo/generate) and create a repository in your GitHub account. Choose **Public**: GitHub Pages is free for public repositories. Keep the name `orbi-demo` so the addresses below only need your username.
 
 A template creates an independent repository with its own issues and history. Orbi uses GitHub's template source to recognize the official sample; use the template button when creating it.
 
-## 2. Run the app
+## 2. Turn on GitHub Pages
+
+In your copy, open **Settings → Pages**. Under **Build and deployment**, choose **Deploy from a branch**, pick `main` and `/ (root)`, then **Save**.
+
+After a few minutes your copy is live at `https://YOUR-USERNAME.github.io/orbi-demo/`. Open it: this is the page Orbi's change will show up on.
+
+### Or run it locally
 
 You need **Node.js 20 or later** and Git. You can run the app locally without installing packages, adding API keys, or signing in to Orbi.
 
@@ -55,9 +61,15 @@ Orbi posts progress on the issue, writes the change, and opens a pull request. A
 
 You can also ask for a remaining-task count or for the list to survive a page refresh. These features are deliberately left out of the starting app so you have a change to try.
 
-## 4. Run your delivered change
+## 4. Open your delivered change
 
 Wait until your task shows a **merged pull request**. Closing an issue alone does not mean the code was merged.
+
+Open `https://YOUR-USERNAME.github.io/orbi-demo/` again. GitHub Pages republishes `main` after the merge; it can take up to 10 minutes. Refresh until the new button appears.
+
+To check Clear completed, mark a task done and click the new button. Completed tasks should disappear; active tasks should stay.
+
+### If you run it locally
 
 In your local copy, check for uncommitted changes and confirm your current branch:
 
@@ -73,8 +85,6 @@ git pull --ff-only
 ```
 
 If `npm start` is still running, refresh the browser. If you stopped it, run `npm start` again and open http://127.0.0.1:4178/.
-
-To check Clear completed, mark a task done and click the new button. Completed tasks should disappear; active tasks should stay.
 
 ## Run the tests
 

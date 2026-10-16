@@ -4,7 +4,7 @@ let todos = [
   { id: 1, title: "Sign in to Orbi Cloud", done: true },
   { id: 2, title: "Connect your demo repository", done: true },
   { id: 3, title: "Ask Orbi to add Clear completed", done: false },
-  { id: 4, title: "Open your delivered change", done: false },
+  { id: 4, title: "Open your delivered change on your Pages site", done: false },
   { id: 5, title: "Connect your own project", done: false },
 ];
 let filter = "all";
