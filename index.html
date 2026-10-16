@@ -3,31 +3,52 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Todo</title>
-  <style>
-    body { font: 16px/1.5 system-ui, sans-serif; max-width: 32rem; margin: 2rem auto; padding: 0 1rem; }
-    form { display: flex; gap: .5rem; }
-    input[type=text] { flex: 1; padding: .4rem; }
-    ul { list-style: none; padding: 0; }
-    li { display: flex; align-items: center; gap: .5rem; padding: .3rem 0; border-bottom: 1px solid #eee; }
-    li span { flex: 1; }
-    .done { text-decoration: line-through; color: #888; }
-    nav { display: flex; gap: .5rem; margin-top: 1rem; }
-    [aria-pressed=true] { font-weight: bold; }
-  </style>
+  <meta name="description" content="Try a working todo app, then let Orbi deliver one useful change in your own copy.">
+  <title>Orbi Demo · Your task list</title>
+  <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
-  <h1>Todo</h1>
-  <form id="new-todo">
-    <input id="title" type="text" placeholder="What needs doing?" autocomplete="off">
-    <button type="submit">Add</button>
-  </form>
-  <ul id="list"></ul>
-  <nav>
-    <button data-filter="all">All</button>
-    <button data-filter="active">Active</button>
-    <button data-filter="done">Done</button>
-  </nav>
+  <main>
+    <header><a href="https://github.com/orbi-build/orbi-demo">Orbi Demo</a><span class="muted">Sample project</span></header>
+    <h1>Your demo task list</h1>
+    <p class="muted">Try the app, then let Orbi add a useful feature in your own copy.</p>
+    <div class="app-layout">
+      <section class="card" aria-labelledby="list-heading">
+        <p class="section-label">YOUR DEMO APP</p>
+        <h2 id="list-heading">Today's list</h2>
+        <form class="todo-form" id="new-todo" novalidate>
+          <div>
+            <label for="title">What needs doing?</label>
+            <input id="title" type="text" placeholder="e.g. Review the homepage" autocomplete="off" aria-describedby="input-error">
+          </div>
+          <button class="button" type="submit">Add</button>
+        </form>
+        <p id="input-error" class="error" role="alert" hidden>Enter a task first.</p>
+        <ul class="todo-list" id="list"></ul>
+        <p id="empty-list" class="muted" hidden></p>
+        <nav class="filters" aria-label="Filter tasks">
+          <button class="button secondary" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="button secondary" type="button" data-filter="active" aria-pressed="false">Active</button>
+          <button class="button secondary" type="button" data-filter="done" aria-pressed="false">Done</button>
+        </nav>
+        <p id="app-status" class="muted" role="status" aria-live="polite"></p>
+        <p class="muted reset-note">This sample list resets when you refresh.</p>
+        <noscript><p class="error">Enable JavaScript to use the task list.</p></noscript>
+      </section>
+      <aside aria-labelledby="try-heading">
+        <h2 id="try-heading">Try one change with Orbi</h2>
+        <p>Ask Orbi to add a <strong>Clear completed</strong> button to your copy. Once the change is merged, check off a task and use the button to remove completed tasks in one click.</p>
+        <a class="button secondary" href="https://orbi.build/api/?ref=gh-orbi-demo">Try this change</a>
+        <p class="muted">Create your own copy, connect it in Orbi Cloud, then submit the request.</p>
+        <details>
+          <summary>Other changes to try</summary>
+          <p>Show how many items are left.</p>
+          <p>Keep the list after a refresh.</p>
+        </details>
+      </aside>
+    </div>
+    <footer>Built to try one real change with <a href="https://orbi.build/?ref=gh-orbi-demo">Orbi</a>.</footer>
+  </main>
   <script type="module" src="src/app.js"></script>
 </body>
 </html>

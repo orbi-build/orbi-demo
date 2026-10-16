@@ -1,45 +1,85 @@
 # orbi-demo
 
-[Orbi](https://orbi.build/?ref=gh-orbi-demo) is an AI coding agent that works from GitHub issues. You label an issue `ai-ready`; Orbi writes the change, has a second AI session review it, and merges the pull request itself. This repository is a tiny todo app to try it on. Make your own copy and let Orbi change anything in it, so your real projects stay untouched.
+Run a small todo app, then ask [Orbi](https://orbi.build/?ref=gh-orbi-demo) to add a useful feature in your own copy. Start with **Clear completed**: you will be able to see and use the change after Orbi merges it.
 
-Open `index.html` in a browser to use the app. The list logic lives in `src/todo.js` and is tested in `test/`. CI runs the tests on every pull request, and Orbi only merges once they pass.
+![The running demo: three example tasks, All/Active/Done filters, and a suggested Clear completed change.](docs/demo-app.png)
 
-## See finished deliveries first
+## 1. Create your copy
 
-A delivery is one issue taken to a merged pull request. Orbi is developed with Orbi, and these two bugs from its own repository were each delivered that way and then shipped in v0.5.57. Each page links to the issue, the pull request and the commit, and shows the agent's run time, model requests and tokens.
+Click [Use this template](https://github.com/orbi-build/orbi-demo/generate) and create a repository in your GitHub account. Keep the name `orbi-demo` to use the commands below unchanged except for your username.
 
-- [Merge fails on repositories that disallow merge commits](https://orbi.build/proof/orbi-build/orbi/1480?ref=gh-orbi-demo)
-- [Delivery branches stay on the remote after merge](https://orbi.build/proof/orbi-build/orbi/1478?ref=gh-orbi-demo)
+A template creates an independent repository with its own issues and history. Orbi uses GitHub's template source to recognize the official sample; use the template button when creating it.
 
-## Try it on your own copy
+## 2. Run the app
 
-This uses Orbi Cloud, the hosted version. Your first 3 merged deliveries are free in total, model usage included, with no credit card; a delivery that fails doesn't count. Paid plans are on the [pricing page](https://orbi.build/cloud/?ref=gh-orbi-demo).
+You need **Node.js 20 or later** and Git. You can run the app locally without installing packages, adding API keys, or signing in to Orbi.
 
-1. Click **Use this template** to make your own copy of this repository.
-2. Open the [Orbi Cloud dashboard](https://orbi.build/api/?ref=gh-orbi-demo) and sign in with GitHub. Install the Orbi GitHub App on your copy only, then pick your copy on the **Connect repository** page.
-3. After connecting you land on the status page. Wait for it to finish preparing the environment Orbi works in. It takes one to two minutes and also adds the `ai-ready` label to your copy.
-4. Open an issue that asks for one small change. A title and a sentence or two are enough, for example:
+Replace `YOUR-USERNAME` with your GitHub username. If you chose another repository name, use that name in both commands too.
 
-   > **Show how many todos are left**
+```sh
+git clone https://github.com/YOUR-USERNAME/orbi-demo.git
+cd orbi-demo
+npm start
+```
+
+Open **http://127.0.0.1:4178/**. Keep the terminal running; press `Ctrl+C` to stop the server. If port 4178 is in use, stop the process using that port and run `npm start` again.
+
+Try adding a task, checking it off, deleting it, and switching between All, Active and Done. The list resets to the example tasks when you refresh. Keeping your changes after a refresh is one of the features you can ask Orbi to add.
+
+Use `npm start` to serve the page over HTTP. Opening `index.html` directly prevents the browser from loading its JavaScript modules.
+
+## 3. Let Orbi add Clear completed
+
+1. Open the [Orbi Cloud dashboard](https://orbi.build/api/?ref=gh-orbi-demo) and sign in with GitHub. Before connecting, check your available project slots and the [current trial terms](https://orbi.build/cloud/?ref=gh-orbi-demo). The sample uses one project slot.
+2. Install the Orbi GitHub App for your copy and select it on **Connect repository**. If the new copy is missing, add it to the App's repository access and refresh the page.
+3. Wait until the dashboard shows that your project’s work environment is ready. Choose **Clear completed** from the sample tasks if the dashboard offers it. Otherwise, open an issue in **your copy** with the request below and add the `ai-ready` label. If it is missing, create it under your repository’s **Issues → Labels** first.
+
+   > **Add a Clear completed button**
    >
-   > Under the list, show "N items left", counting only todos that are not done. Update it whenever a todo is added, completed or removed.
+   > Add a button that removes completed tasks and keeps active tasks. Keep the existing filters working. The new button should be reachable with Tab and usable with Enter. Add tests for the list logic.
 
-   Other ideas: a "Clear completed" button, keeping the list after a page reload, editing a todo's title by double-clicking it.
-5. Add the `ai-ready` label. Orbi checks for labelled issues every few minutes and comments on the issue as it works.
+Orbi posts progress on the issue, writes the change, and opens a pull request. A second AI reviewer checks the change. Orbi merges it once checks pass, unless your repository requires human approval. If it needs help, the dashboard and issue explain what is blocking it.
 
-Orbi writes the change on a branch and opens a pull request. The review session checks it against the issue, fixes what it can, and approves the final version, its own fixes included. If nobody has pushed to the pull request since that approval and CI passes, Orbi merges it without waiting for you. If you want to approve every merge yourself, turn on branch protection with a required review; Orbi then labels the issue `ai-awaiting-merge` and waits for you. If Orbi can't finish, it labels the issue `ai-blocked` and explains why in a comment. To see the change, read the merged pull request on GitHub, or clone your copy and open `index.html`.
+You can also ask for a remaining-task count or for the list to survive a page refresh. These features are deliberately left out of the starting app so you have a change to try.
 
-## Optional: cut a release
+## 4. Run your delivered change
 
-Releases never happen on their own. On the status page, open **Settings and reference**, and create a version under **Versions**, such as `v0.2.0`. That makes a GitHub milestone with the same name; put issues in the version by adding them to that milestone. Click **Release** when they are done. Orbi then opens a release issue, bumps the version, tags it and publishes the GitHub Release. Details are in the [Orbi Cloud quickstart](https://cloud-docs.orbi.build/quickstart) and [releases guide](https://cloud-docs.orbi.build/releases).
+Wait until your task shows a **merged pull request**. Closing an issue alone does not mean the code was merged.
+
+In your local copy, check for uncommitted changes and confirm your current branch:
+
+```sh
+git status --short
+git branch --show-current
+```
+
+Continue once the working tree is clean and you are on the branch Orbi merges into (`main` unless you chose another base branch). Commit or stash local edits before switching branches. Then update:
+
+```sh
+git pull --ff-only
+```
+
+If `npm start` is still running, refresh the browser. If you stopped it, run `npm start` again and open http://127.0.0.1:4178/.
+
+To check Clear completed, mark a task done and click the new button. Completed tasks should disappear; active tasks should stay.
 
 ## Run the tests
 
-```
+```sh
 npm test
 ```
 
-Requires Node.js 20 or later. No dependencies.
+Tests check the list logic and make real HTTP requests to the local server. CI runs them on pull requests with Node.js 20 and 22.
+
+- `src/todo.js`: pure functions for adding, completing, removing and filtering tasks.
+- `src/app.js` and `src/style.css`: the browser interface.
+- `scripts/start.js` and `scripts/server.js`: the local HTTP server, bound to this computer only.
+
+## Move to your own project
+
+After you have tried a change, use **Manage projects** in Cloud to connect your real repository. If your project slots are full, disconnect the idle sample there first. Disconnecting reclaims Orbi’s work environment without changing the GitHub repository; delivery history and usage records remain available.
+
+For help, email [support@orbi.build](mailto:support@orbi.build) with your repository and issue or pull request URL. You can inspect other real deliveries too: [a merge-method fix](https://orbi.build/proof/orbi-build/orbi/1480?ref=gh-orbi-demo) and [a branch-cleanup fix](https://orbi.build/proof/orbi-build/orbi/1478?ref=gh-orbi-demo).
 
 ## License
 
