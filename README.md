@@ -55,7 +55,7 @@ Use `npm start` to serve the page over HTTP. Opening `index.html` directly preve
 
    > **Add a Clear completed button**
    >
-   > Add a button that removes completed tasks and keeps active tasks. Keep the existing filters working. The new button should be reachable with Tab and usable with Enter. Add tests for the list logic.
+   > Add a button that removes completed tasks and keeps active tasks. Keep the existing filters working. The new button should be reachable with Tab and usable with Enter. Add tests for the list logic. Also remove the page's suggestion to add this button under "Try one change with Orbi".
 
 Orbi posts progress on the issue, writes the change, and opens a pull request. A second AI reviewer checks the change. Orbi merges it once checks pass, unless your repository requires human approval. If it needs help, the dashboard and issue explain what is blocking it.
 
