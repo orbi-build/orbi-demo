@@ -1,10 +1,10 @@
 # orbi-demo
 
-Try an example onboarding checklist, then ask [Orbi](https://orbi.build/?ref=gh-orbi-demo) to add a useful feature in your own copy. Start with **Clear completed**: after Orbi merges it, you open your copy's web page and use the new button.
+Try a small todo list app, then ask [Orbi](https://orbi.build/?ref=gh-orbi-demo) to add a useful feature in your own copy. Start with **Clear completed**: after Orbi merges it, you open your copy's web page and use the new button.
 
-[Open the live example](https://orbi-build.github.io/orbi-demo/) — no installation or sign-in needed. The checked items are sample progress, not your account status. Your edits on this page reset when you refresh. Changes Orbi makes in your copy show up on your copy's own page, not on this one.
+[Open the live example](https://orbi-build.github.io/orbi-demo/) — no installation or sign-in needed. Your edits on this page reset when you refresh. Changes Orbi makes in your copy show up on your copy's own page, not on this one.
 
-![The running demo: five Orbi onboarding steps, two checked examples, All/Active/Done filters, and a suggested Clear completed change.](docs/demo-app.png)
+![The running demo: a todo list with five everyday tasks, two checked, All/Active/Done filters, and a short note about Orbi on the right.](docs/demo-app.png)
 
 <details>
 <summary>Watch the 44-second beta demo</summary>
@@ -41,7 +41,7 @@ npm start
 
 Open **http://127.0.0.1:4178/**. Keep the terminal running; press `Ctrl+C` to stop the server. If port 4178 is in use, stop the process using that port and run `npm start` again.
 
-The sample checklist shows how to get started with Orbi: sign in, connect the demo repository, request a change, open the delivered app, and move to your own project. Two items start checked as examples. You update the list yourself; it does not track your Orbi account.
+The sample list has five everyday tasks. Two start checked as examples.
 
 Try adding a task, checking it off, deleting it, and switching between All, Active and Done. The list resets to the example tasks when you refresh. Keeping your changes after a refresh is one of the features you can ask Orbi to add.
 
@@ -55,7 +55,7 @@ Use `npm start` to serve the page over HTTP. Opening `index.html` directly preve
 
    > **Add a Clear completed button**
    >
-   > Add a button that removes completed tasks and keeps active tasks. Keep the existing filters working. The new button should be reachable with Tab and usable with Enter. Add tests for the list logic. Also remove the page's suggestion to add this button under "Try one change with Orbi".
+   > Add a button that removes completed tasks and keeps active tasks. Keep the existing filters working. The new button should be reachable with Tab and usable with Enter. Add tests for the list logic.
 
 Orbi posts progress on the issue, writes the change, and opens a pull request. A second AI reviewer checks the change. Orbi merges it once checks pass, unless your repository requires human approval. If it needs help, the dashboard and issue explain what is blocking it.
 

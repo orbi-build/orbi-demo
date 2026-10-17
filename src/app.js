@@ -1,11 +1,11 @@
 import { addTodo, toggleTodo, removeTodo, visibleTodos } from "./todo.js";
 
 let todos = [
-  { id: 1, title: "Sign in to Orbi Cloud", done: true },
-  { id: 2, title: "Connect your demo repository", done: true },
-  { id: 3, title: "Ask Orbi to add Clear completed", done: false },
-  { id: 4, title: "Open your delivered change on your Pages site", done: false },
-  { id: 5, title: "Connect your own project", done: false },
+  { id: 1, title: "Buy milk", done: true },
+  { id: 2, title: "Reply to Sam's email", done: true },
+  { id: 3, title: "Book a dentist appointment", done: false },
+  { id: 4, title: "Water the plants", done: false },
+  { id: 5, title: "Pay the electricity bill", done: false },
 ];
 let filter = "all";
 
